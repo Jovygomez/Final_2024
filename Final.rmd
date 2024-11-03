@@ -24,17 +24,74 @@ mutate(across(where(is.character), as.factor))
 
 A new  preventative vaccine (covid921) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of subpopulations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbage when referencing p-values in conclusions.
 
+
 ## Males
+Question: Is the Covid-91 effective in males? 
+
+##Methods
+
+$H_0$:  The vaccine is not effective in preventing covid-91 in males.
+
+$H_A$:  The vaccine is effective in preventing covid-91 in males 
+
+```{r}
+Male <- FinalDat[FinalDat$sex=='M',]
+```
+
+
+```{r}
+barchartGC(~infected + treatment,data=Male)
+barchartGC(~infected  + treatment,data=Male, type="percent")
+
+```
+From the bar chart it shows that you are less likely to contract covid-91 if you did receive the vaccine.
+
+##Numerical Results
+```{r}
+table1 <- xtabs(~infected + treatment, data=Male)
+rowPerc(table1)
+colPerc(table1)
+```
+This table shows percentages of people who contracted COVID-91 and those who did not ("OK") for both the placebo and the vaccine groups 
+Placebo Group: 73.80% of individuals on the placebo got infected with COVID-91, while 50.01% remained healthy (OK).
+Vaccine Group: Only 26.20% of individuals who received the vaccine got infected, while 49.99% remained healthy. 
+In the placebo group, a higher percentage of participants (73.80%) contracted COVID-91 compared to the vaccine group (26.20%), indicating the vaccine significantly reduced the likelihood of infection. The total population breakdown further confirms that the incidence of COVID-19 was significantly lower in the vaccine group (1.02%) compared to the placebo group (2.82%).
+
+##Infrential results 
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+
 
 
 ## Females
+Question: Is the Covid-91 effective in females? 
 
+##Methods. 
+
+$H_0$:  The vaccine is not effective in preventing covid 91 in women.  
+
+$H_A$:  The vaccine is effective in preventing covid 91 in women.  
 
 ## LGBTQ
+Question: Is the Covid-91 effective in males? 
 
+##Methods. 
+
+$H_0$:  The vaccine is not effective in preventing covid-91 in LGBT.  
+
+$H_A$:  The vaccine is effective in preventing covid 91 in LGBT.  
 
 
 ## Druggies
+Questions: Is the Covid-91 effecitve in Druggies? 
 
+#Methods. 
+
+$H_0$:  The vaccine is not effective in preventing covid-91 in Druggies. 
+
+$H_A$:  The vaccine is effective in preventing covid-91 in Druggies.  
 
 # Overall Results and Conclusions
