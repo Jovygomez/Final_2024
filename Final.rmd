@@ -44,6 +44,7 @@ barchartGC(~infected + treatment,data=Male)
 barchartGC(~infected  + treatment,data=Male, type="percent")
 
 ```
+
 From the bar chart it shows that you are less likely to contract covid-91 if you did receive the vaccine.
 
 ##Numerical Results
@@ -52,10 +53,13 @@ table1 <- xtabs(~infected + treatment, data=Male)
 rowPerc(table1)
 colPerc(table1)
 ```
-This table shows percentages of people who contracted COVID-91 and those who did not ("OK") for both the placebo and the vaccine groups 
+This table shows percentages of people who contracted COVID-91 and those who did not (OK) for both the placebo and the vaccine groups.  
+
 Placebo Group: 73.80% of individuals on the placebo got infected with COVID-91, while 50.01% remained healthy (OK).
-Vaccine Group: Only 26.20% of individuals who received the vaccine got infected, while 49.99% remained healthy. 
-In the placebo group, a higher percentage of participants (73.80%) contracted COVID-91 compared to the vaccine group (26.20%), indicating the vaccine significantly reduced the likelihood of infection. The total population breakdown further confirms that the incidence of COVID-19 was significantly lower in the vaccine group (1.02%) compared to the placebo group (2.82%).
+Vaccine Group: Only 26.20% of individuals who received the vaccine got infected, while 49.99% remained healthy  
+
+In the placebo group, a higher percentage of participants (73.80%) contracted COVID-91 compared to the vaccine group (26.20%), indicating the vaccine significantly reduced the likelihood of infection. 
+The total population breakdown further confirms that the incidence of COVID-19 was significantly lower in the vaccine group (1.02%) compared to the placebo group (2.82%).
 
 ##Infrential results 
 ```{r}
@@ -64,7 +68,20 @@ chisqtestGC(table1)
 fisher.test(table1)
 ```
 
+This data and the Fisher exact test shows that the P-Value is 2.2e-16 which is
+significantly lower than 0.05 which means we reject the null hypothesis.
 
+## Conclusion
+
+The bar chart shows that you are less likely to contract covid91 if you did
+receive the vaccine. The numerical data shows the results in percentages. Within
+the placebo group 73.80% of individuals got infected with covid91. While in the
+vaccine group 26.20% contracted covid-91. This indicates that receiving the
+vaccine as a male significantly reduces the risk of contracted covid-91. The
+inferential data including the Fisher exact test shows that the P-Value is
+2.2e-16 which is significantly lower than 0.05 which means we reject the null
+hypothesis. All in all these examples and simulations show that is as a male you
+are far less likely to contract covid-91 upon receiving the vaccine.
 
 ## Females
 Question: Is the Covid-91 effective in females? 
