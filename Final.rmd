@@ -86,11 +86,53 @@ are far less likely to contract covid-91 upon receiving the vaccine.
 ## Females
 Question: Is the Covid-91 effective in females? 
 
+
 ##Methods. 
 
 $H_0$:  The vaccine is not effective in preventing covid 91 in women.  
 
 $H_A$:  The vaccine is effective in preventing covid 91 in women.  
+
+## Graphical Results 
+```{r}
+Female <- FinalDat[FinalDat$sex=='F',]
+```
+
+
+```{r}
+barchartGC(~infected + treatment,data=Female)
+barchartGC(~infected + treatment,data=Female, type="percent")
+
+```
+
+This bar chart shows that females are less likely to contract Covid91 after
+reviewing the vaccine. 
+
+##Numerical Results 
+```{r}
+table1 <- xtabs(~infected + treatment, data=Female)
+rowPerc(table1)
+colPerc(table1)
+```
+
+The numerical data presents the results in percentages. In the placebo group, 64.93% of individuals contracted COVID-91, while in the vaccine group 118, only 35.07% were infected. This suggests that receiving the vaccine substantially reduces the risk of contracting COVID-91, particularly for females.
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+
+This data and the Fisher exact test shows that the P-Value is 1.246e-08 which is
+significantly lower than 0.05 which means we reject the null hypothesis. 
+
+##Conclusion
+
+The bar chart shows that you are less likely to contract Covid91 if you did
+receive the vaccine. The numerical data shows the results in percentages. 
+Within the placebo group 64.93% of individuals got infected with Covid91, while in the
+vaccine group 35.07% contracted covid-91. 
+This indicates that receiving the vaccine as a female significantly reduces the risk of contracted Covid-91. The inferential data including the Fisher exact test shows that the P-Value is 1.246e-08 which, is significantly lower than 0.05 which means we reject the null hypothesis In summation these examples and simulations show that is as a female you are far less likely to contract Covid-91 if you receive the vaccine.
 
 ## LGBTQ
 Question: Is the Covid-91 effective in males? 
